@@ -1,0 +1,12 @@
+flask-wtf>=1.2.2
+flask>=3.1.0
+jinja2>=3.1.6
+openai>=1.72.0
+pandas>=2.2.3
+plotly>=6.0.1
+psycopg2-binary>=2.9.10
+requests>=2.32.3
+sqlalchemy>=2.0.40
+streamlit>=1.44.1
+weasyprint>=65.0
+werkzeug>=3.1.3

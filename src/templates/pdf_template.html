@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados de Clasificación Niza - {{ data.nombre }}</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2cm;
+            border-bottom: 1px solid #4F46E5;
+            padding-bottom: 0.5cm;
+        }
+        .logo {
+            max-width: 80%;
+            margin: 0 auto;
+            display: block;
+        }
+        h1 {
+            color: #4F46E5;
+            font-size: 22pt;
+            margin-bottom: 0.5cm;
+        }
+        h2 {
+            color: #4F46E5;
+            font-size: 16pt;
+            margin-top: 1cm;
+        }
+        h3 {
+            color: #111827;
+            font-size: 14pt;
+        }
+        .section {
+            margin-bottom: 1.5cm;
+        }
+        .personal-info {
+            background-color: #F9FAFB;
+            padding: 0.5cm;
+            border-radius: 5px;
+        }
+        .info-row {
+            margin-bottom: 0.3cm;
+        }
+        .info-label {
+            font-weight: bold;
+            display: inline-block;
+            width: 40%;
+        }
+        .classification {
+            margin-top: 0.5cm;
+            margin-bottom: 1cm;
+        }
+        .class-item {
+            background-color: #F3F4F6;
+            padding: 0.3cm;
+            margin-bottom: 0.3cm;
+            border-left: 4px solid #4F46E5;
+        }
+        .class-title {
+            font-weight: bold;
+            margin-bottom: 0.1cm;
+        }
+        .disclaimer {
+            font-size: 9pt;
+            color: #6B7280;
+            margin-top: 1cm;
+            border-top: 1px solid #E5E7EB;
+            padding-top: 0.5cm;
+        }
+        .highlight {
+            color: #4F46E5;
+            font-weight: bold;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 9pt;
+            text-align: center;
+            color: #6B7280;
+            padding-bottom: 0.5cm;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Clasificador de Emprendimientos Universitarios</h1>
+        <h2>Resultados de Clasificación Niza</h2>
+        <p>Fecha de análisis: {{ data.fecha_generacion }}</p>
+    </div>
+
+    <div class="section">
+        <h2>Información Personal</h2>
+        <div class="personal-info">
+            <div class="info-row">
+                <span class="info-label">Nombre:</span>
+                <span>{{ data.nombre }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Email:</span>
+                <span>{{ data.email }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Edad:</span>
+                <span>{{ data.edad }} años</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Universidad:</span>
+                <span>{{ data.universidad }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Carrera:</span>
+                <span>{{ data.carrera }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Semestre:</span>
+                <span>{{ data.semestre }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Información del Emprendimiento</h2>
+        <div class="personal-info">
+            <div class="info-row">
+                <span class="info-label">Nombre del Emprendimiento:</span>
+                <span>{{ data.nombre_emprendimiento }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Fecha de Creación:</span>
+                <span>{{ data.fecha_creacion }}</span>
+            </div>
+        </div>
+        <h3>Descripción</h3>
+        <p>{{ data.descripcion }}</p>
+    </div>
+
+    <div class="section">
+        <h2>Clasificaciones Niza Recomendadas</h2>
+        <p>Basado en el análisis de tu emprendimiento, se recomiendan las siguientes clasificaciones Niza para el registro de tu marca:</p>
+        
+        <div class="classification">
+            {% for clase, datos in data.clasificaciones.items() %}
+            <div class="class-item">
+                <div class="class-title">{{ clase }}. {{ datos.titulo }}</div>
+                <div class="class-description">{{ datos.descripcion }}</div>
+                <div class="class-relevance">Relevancia: <span class="highlight">{{ datos.relevancia }}%</span></div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <p><span class="highlight">Nota importante:</span> Estas clasificaciones son recomendaciones basadas en la descripción de tu emprendimiento. Se recomienda consultar con un especialista en propiedad intelectual antes de proceder con el registro de marca.</p>
+    </div>
+
+    <div class="disclaimer">
+        <p>Este informe fue generado automáticamente mediante el uso de tecnología de procesamiento de lenguaje natural. Los resultados son orientativos y no constituyen asesoramiento legal. Para asistencia profesional, comunícate con un abogado especializado en propiedad intelectual.</p>
+    </div>
+
+    <div class="footer">
+        <p>Clasificador de Emprendimientos Universitarios - Niza © {{ data.year }}</p>
+    </div>
+</body>
+</html>
