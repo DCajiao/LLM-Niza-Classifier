@@ -7,7 +7,38 @@
 	},
 	"item": [
 		{
-			"name": "form_submission",
+			"name": "form_submission-local",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Valentina Gómez\",\r\n  \"email\": \"valentina.gomez@example.com\",\r\n  \"edad\": 22,\r\n  \"universidad\": \"Universidad de los Andes\",\r\n  \"carrera\": \"Ingeniería Electrónica\",\r\n  \"semestre\": \"8\",\r\n  \"experiencia_previa\": \"Sí\",\r\n  \"nombre_emprendimiento\": \"EcoVolt\",\r\n  \"descripcion_emprendimiento\": \"Desarrollamos soluciones de energía solar portátiles para zonas rurales.\",\r\n  \"clasificaciones_niza\": {\r\n    \"clase\": \"11\",\r\n    \"confianza\": 93,\r\n    \"relevancia\": 88,\r\n    \"descripcion\": \"testing\"\r\n  },\r\n  \"acepta_politica\": true\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/form_submission",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"form_submission"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "form_submission-prod",
 			"request": {
 				"method": "POST",
 				"header": [],
