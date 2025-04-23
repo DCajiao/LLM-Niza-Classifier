@@ -1,10 +1,13 @@
 from flask import Flask, request, jsonify
+
 from core.app import insert_data
+from security.api_key_management import require_api_key
 
 app = Flask(__name__)
 
 
 @app.route('/form_submission', methods=['POST'])
+@require_api_key
 def form_submission():
     data = request.get_json()
     try:
