@@ -10,18 +10,16 @@ logger = logging.getLogger(__name__)
 
 
 class DatabaseManager:
-    def __init__(self, database_name, pool_size=5, max_overflow=2):
+    def __init__(self, pool_size=5, max_overflow=2):
         """
         Initializes the database manager with connection pooling.
 
-        :param database_name: Name of the PostgreSQL database.
         :param pool_size: Number of connections in the pool.
         :param max_overflow: Max overflow connections.
         """
-        self.database_name = database_name
         self.credentials = CredentialsManager.get_credentials()
 
-        # Configuración del pool de conexiones con SQLAlchemy
+        # Configuration of the connection pool with SQLAlchemy
         self.pool = self._create_pool(pool_size, max_overflow)
 
     def _create_pool(self, pool_size, max_overflow):
@@ -33,6 +31,7 @@ class DatabaseManager:
             db_port = self.credentials.get("DB_PORT", 5432)
             db_user = self.credentials["DB_USER"]
             db_password = self.credentials["DB_PASSWORD"]
+            db_name = self.credentials["DB_NAME"]
 
             connection_url = sqlalchemy.engine.URL.create(
                 drivername="postgresql+pg8000",
@@ -40,7 +39,7 @@ class DatabaseManager:
                 password=db_password,
                 host=db_host,
                 port=db_port,
-                database=self.database_name
+                database=db_name,
             )
 
             engine = sqlalchemy.create_engine(
