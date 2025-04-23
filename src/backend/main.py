@@ -1,0 +1,23 @@
+from flask import Flask, request, jsonify
+from core.app import insert_data
+
+app = Flask(__name__)
+
+
+@app.route('/form_submission', methods=['POST'])
+def form_submission():
+    data = request.get_json()
+    try:
+        response = insert_data(data)
+
+        if response["status"] == "error":
+            return jsonify({"error": response["message"]}), 400
+        elif response["status"] == "success":
+            return jsonify({"message": response["message"]}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)

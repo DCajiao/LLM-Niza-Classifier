@@ -1,0 +1,15 @@
+[project]
+name = "llm-niza-classifier"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "db-dtypes>=1.4.2",
+    "flask>=3.1.0",
+    "pandas>=2.2.3",
+    "pg8000>=1.31.2",
+    "python-dotenv>=1.1.0",
+    "requests>=2.32.3",
+    "sqlalchemy>=2.0.40",
+]
