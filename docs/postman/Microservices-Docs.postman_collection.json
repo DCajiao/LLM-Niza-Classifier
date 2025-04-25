@@ -118,6 +118,42 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "predict_niza_classification-prod",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"description\":\"Una aplicación que conecta a personas que buscan aprender idiomas con hablantes nativos para intercambios de conversación.\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://llm-niza-classifier.onrender.com/predict_niza_classification",
+							"protocol": "https",
+							"host": [
+								"llm-niza-classifier",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"predict_niza_classification"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
