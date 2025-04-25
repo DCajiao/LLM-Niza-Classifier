@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 from core.app import insert_data
 from security.api_key_management import require_api_key
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}}, methods=["POST"], allow_headers=["Content-Type", "Authorization"])
 
 
 @app.route('/form_submission', methods=['POST'])
