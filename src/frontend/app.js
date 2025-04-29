@@ -60,7 +60,6 @@ async function clasificarYGuardar() {
 
         document.getElementById("resultado").innerHTML = `
             <h3>✔️ Registro exitoso</h3>
-            <p><strong>Mensaje del backend:</strong> ${resultado.message}</p>
             <h4>Clasificaciones Niza sugeridas:</h4>
             <ul>
                 ${datos.clasificaciones_niza.map(c => `
@@ -72,6 +71,9 @@ async function clasificarYGuardar() {
                 </li>
                 `).join('')}
             </ul>
+            <a href="tablero.html">
+                <button>Ver tablero</button>
+            </a>
         `;
 
     } catch (error) {
