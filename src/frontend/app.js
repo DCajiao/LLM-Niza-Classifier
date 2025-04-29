@@ -27,7 +27,7 @@ async function clasificarYGuardar() {
     try {
         Swal.fire({
             title: "Clasificando...",
-            text: "Analizando tu emprendimiento",
+            text: "Nuestra IA está analizando tu emprendimiento",
             allowOutsideClick: false,
             didOpen: () => Swal.showLoading()
         });
@@ -59,21 +59,28 @@ async function clasificarYGuardar() {
         Swal.fire("¡Éxito!", "Registro guardado correctamente.", "success");
 
         document.getElementById("resultado").innerHTML = `
+        <div class="card">
+            <div class="card-header success">
             <h3>✔️ Registro exitoso</h3>
-            <h4>Clasificaciones Niza sugeridas:</h4>
-            <ul>
+            <p>Gracias por registrar tu emprendimiento. Estas son las clasificaciones sugeridas por nuestra IA:</p>
+            </div>
+            <div class="card-body">
+            <ul class="clasificaciones-list">
                 ${datos.clasificaciones_niza.map(c => `
-                <li style="margin-bottom:10px;">
-                    <strong>Clase ${c.clase}</strong><br>
-                    <em>${c.descripcion}</em><br>
-                    Confianza: ${c.confianza}%<br>
-                    Relevancia: ${c.relevancia || 'N/A'}
-                </li>
-                `).join('')}
+                    <li>
+                    <div class="clase-header">Clase <strong>${c.clase}</strong></div>
+                    <div class="clase-desc"><em>${c.descripcion}</em></div>
+                    <div class="clase-meta">
+                        <span>Confianza: <strong>${c.confianza}%</strong></span> · 
+                        <span>Relevancia: <strong>${c.relevancia || 'N/A'}</strong></span>
+                    </div>
+                    </li>`).join("")}
             </ul>
-            <a href="tablero.html">
-                <button>Ver tablero</button>
-            </a>
+
+            <div class="card-footer">
+            <a href="tablero.html" class="btn-dashboard-link">Ver Tablero</a>
+            </div>
+        </div>
         `;
 
     } catch (error) {
