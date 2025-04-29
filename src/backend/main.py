@@ -5,7 +5,7 @@ from core.app import insert_data
 from security.api_key_management import require_api_key
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}}, methods=["POST"], allow_headers=["Content-Type", "Authorization"])
+CORS(app, resources={r"/*": {"origins": "*"}}, methods=["POST", "OPTIONS"], allow_headers=["Content-Type", "Authorization", "x-api-key"])
 
 
 @app.route('/form_submission', methods=['POST'])
