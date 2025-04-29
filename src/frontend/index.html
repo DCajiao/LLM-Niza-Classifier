@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Clasificador Niza</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+  <h1>Registro de Emprendimiento</h1>
+
+  <div class="form-container">
+    <input id="nombre" placeholder="Nombre completo" />
+    <input id="email" placeholder="Correo electrónico" type="email" />
+    <input id="edad" placeholder="Edad" type="number" />
+    <input id="universidad" placeholder="Universidad" />
+    <input id="carrera" placeholder="Carrera" />
+    <input id="semestre" placeholder="Semestre" />
+    <input id="experiencia" placeholder="¿Experiencia previa? (Sí/No)" />
+    <input id="nombre_emprendimiento" placeholder="Nombre del emprendimiento" />
+    <textarea id="descripcion" placeholder="Descripción del emprendimiento..."></textarea>
+
+    <label>
+      <input type="checkbox" id="acepta" /> Acepto la política de privacidad
+    </label>
+
+    <button onclick="clasificarYGuardar()">Enviar</button>
+
+    <div id="resultado" style="margin-top:20px;"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
