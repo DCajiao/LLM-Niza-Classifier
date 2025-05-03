@@ -6,3 +6,6 @@ __pycache__/
 *.env
 uv.lock
 *.csv
+
+node_modules/
+package-lock.json
