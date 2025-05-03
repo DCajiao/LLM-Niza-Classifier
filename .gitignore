@@ -6,3 +6,5 @@ __pycache__/
 *.env
 uv.lock
 *.csv
+test/
+template/
