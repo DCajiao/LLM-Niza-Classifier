@@ -6,6 +6,7 @@ import Step2 from "./components/Step2";
 import Step3 from "./components/Step3";
 import Step4 from "./components/Step4";
 import Dashboard from "./components/Dashboard";
+import Footer from "./components/Footer";
 import { useState } from "react";
 
 export default function App() {
@@ -57,6 +58,7 @@ export default function App() {
             </div>
           </main>
         </div>
+        <Footer />
       </div>
     </Router>
   );
