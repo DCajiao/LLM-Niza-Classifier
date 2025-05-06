@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { obtenerClasificacionNiza } from "../services/llmService";
 import { guardarRegistro } from "../services/backendService";
 import Loader from "../components/Loader";
+import { motion } from "framer-motion";
 
 export default function Paso4Clasificacion({ formData, setFormData, onNext, onBack }) {
     const [clasificaciones, setClasificaciones] = useState(null);
@@ -77,6 +78,11 @@ export default function Paso4Clasificacion({ formData, setFormData, onNext, onBa
     }, []);
 
     return (
+        <motion.div
+              className="bg-white rounded-2xl shadow-md p-6 w-full max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+        >
         <div className="card">
             <h2>Paso 4: Clasificación Niza</h2>
             <p className="text-gray">Recomendaciones basadas en la descripción del emprendimiento.</p>
@@ -115,5 +121,6 @@ export default function Paso4Clasificacion({ formData, setFormData, onNext, onBa
                 </>
             )}
         </div>
+        </motion.div>
     );
 }

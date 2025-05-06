@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Step2 = ({ formData, setFormData, onNext, onBack }) => {
     const handleChange = (e) => {
@@ -6,6 +7,11 @@ const Step2 = ({ formData, setFormData, onNext, onBack }) => {
     };
 
     return (
+        <motion.div
+            className="bg-white rounded-2xl shadow-md p-6 w-full max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+        >
         <div>
             <h2 className="text-xl font-bold mb-4">Paso 2: Información Académica</h2>
             <div className="mb-4">
@@ -47,6 +53,7 @@ const Step2 = ({ formData, setFormData, onNext, onBack }) => {
                 <button onClick={onNext} className="btn btn-primary">Siguiente</button>
             </div>
         </div>
+        </motion.div>
     );
 };
 

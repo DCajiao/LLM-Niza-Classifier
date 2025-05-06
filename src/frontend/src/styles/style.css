@@ -137,12 +137,47 @@ select {
     padding: 0;
 }
 
+
+.sidebar li.active {
+    font-weight: bold;
+    color: #4F46E5;
+}
+
+.app-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #f1f3f5;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #4F46E5;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
 .sidebar li {
     margin-bottom: 0.75rem;
-    color: #6B7280;
+    color: #444;
 }
 
 .sidebar li.active {
     font-weight: bold;
     color: #4F46E5;
+}
+
+.main-content {
+    flex: 1;
 }
