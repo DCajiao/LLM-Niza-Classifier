@@ -14,7 +14,7 @@ export default function Footer() {
         <footer>
             <div className="container footer-container">
                 <div className="footer-column">
-                    <img src="../../public/img/icon_small_without_background.png" alt="" />
+                    <img src={`${import.meta.env.BASE_URL}img/icon_small_without_background.png`} alt="icono" />
                 </div>
 
 

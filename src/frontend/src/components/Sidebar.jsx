@@ -17,7 +17,7 @@ export default function Sidebar({ step }) {
       animate={{ opacity: 1, y: 0 }}
     >
       <aside className="sidebar">
-        <img src="../../public/img/icon_without_background.png" alt=""/>
+      <img src={`${import.meta.env.BASE_URL}img/icon_without_background.png`} alt="icono" />
         <h2>Progreso</h2>
         <ul>
           {steps.map((label, index) => (

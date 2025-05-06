@@ -1,21 +1,14 @@
-
-FROM node:18-alpine AS builder
+FROM node:18 AS builder
 
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
-
+COPY vite.config.js ./
 COPY . .
 
+RUN npm install
 RUN npm run build
 
-FROM nginx:stable-alpine
-
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
-
+FROM httpd:2.4
+COPY --from=builder /app/dist /usr/local/apache2/htdocs/
 EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
