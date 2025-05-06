@@ -1,4 +1,3 @@
-// src/services/llmService.js
 const LLM_API_URL = import.meta.env.VITE_LLM_API_URL;
 const LLM_API_KEY = import.meta.env.VITE_LLM_API_KEY;
 

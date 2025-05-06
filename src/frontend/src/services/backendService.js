@@ -1,4 +1,3 @@
-// src/services/backendService.js
 const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API_URL;
 const BACKEND_API_KEY = import.meta.env.VITE_BACKEND_API_KEY;
 
