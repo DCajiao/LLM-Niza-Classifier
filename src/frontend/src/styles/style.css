@@ -124,26 +124,25 @@ select {
     padding: 1.5rem;
     border-radius: 8px;
     margin-bottom: 2rem;
-  }
-  
-  .sidebar h2 {
+}
+
+.sidebar h2 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
     color: #4F46E5;
-  }
-  
-  .sidebar ul {
+}
+
+.sidebar ul {
     list-style: none;
     padding: 0;
-  }
-  
-  .sidebar li {
+}
+
+.sidebar li {
     margin-bottom: 0.75rem;
     color: #6B7280;
-  }
-  
-  .sidebar li.active {
+}
+
+.sidebar li.active {
     font-weight: bold;
     color: #4F46E5;
-  }
-  
+}
