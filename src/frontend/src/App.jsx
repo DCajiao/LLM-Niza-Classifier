@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Step1 from "./components/Step1";
 import Step2 from "./components/Step2";
 import Step3 from "./components/Step3";
 import Step4 from "./components/Step4";
+import Dashboard from "./components/Dashboard";
+import { useState } from "react";
 
-export default function App() {0
+export default function App() {
   const [step, setStep] = useState(1);
 
   const [formData, setFormData] = useState({
@@ -34,25 +36,28 @@ export default function App() {0
       case 3:
         return <Step3 formData={formData} setFormData={setFormData} onNext={handleNext} onBack={handleBack} />;
       case 4:
-        return <Step4 formData={formData} setFormData={setFormData} onNext={handleNext} onBack={handleBack} setPasoActual={setStep} />;
-      case 5:
-        return <Dashboard />;
+        return <Step4 formData={formData} setFormData={setFormData} onNext={handleNext} onBack={handleBack} />;
       default:
         return <div>¡Gracias por participar!</div>;
     }
   };
 
   return (
-    <div className="min-vh-100 bg-light">
-      <Header />
-      <div className="d-flex app-container p-4">
-        <Sidebar step={step} />
-        <main className="main-content">
-          <div className="card shadow-sm p-4">
-            {renderStep()}
-          </div>
-        </main>
+    <Router>
+      <div className="min-vh-100 bg-light">
+        <Header />
+        <div className="d-flex app-container p-4">
+          <Sidebar step={step} />
+          <main className="main-content">
+            <div className="card shadow-sm p-4">
+              <Routes>
+                <Route path="/" element={renderStep()} />
+                <Route path="/dashboard" element={<Dashboard />} />
+              </Routes>
+            </div>
+          </main>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }

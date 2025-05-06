@@ -1,5 +1,5 @@
 /* 📁 src/styles/style.css */
-/* Reset y fuentes base */
+
 body {
     margin: 0;
     padding: 0;
@@ -20,7 +20,7 @@ body {
 /* Títulos */
 h2 {
     font-size: 1.75rem;
-    color: #4F46E5;
+    color: #0b3046;
     margin-bottom: 0.5rem;
 }
 
@@ -31,7 +31,7 @@ p.text-gray {
 
 /* Botones */
 .btn-primary {
-    background-color: #4F46E5;
+    background-color: #0b3046;
     color: white;
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
@@ -42,7 +42,7 @@ p.text-gray {
 }
 
 .btn-primary:hover {
-    background-color: #4338CA;
+    background-color: #62b8d6;
 }
 
 .btn-secondary {
@@ -93,7 +93,7 @@ select {
 .niza-item {
     background-color: #F3F4F6;
     padding: 1rem;
-    border-left: 4px solid #4F46E5;
+    border-left: 4px solid #0b3046;
     border-radius: 6px;
     margin-bottom: 1rem;
 }
@@ -106,11 +106,12 @@ select {
 }
 
 .header {
-    background-color: #4F46E5;
+    background-color: #0b3046;
     padding: 1.5rem;
     text-align: center;
     color: white;
     margin-bottom: 2rem;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
 .header h1 {
@@ -120,16 +121,17 @@ select {
 }
 
 .sidebar {
-    background-color: #F3F4F6;
+    width: 250px;
+    background-color: #ffffff !important;
+    border-radius: 0.5rem;
     padding: 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .sidebar h2 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
-    color: #4F46E5;
+    color: #0b3046;
 }
 
 .sidebar ul {
@@ -137,10 +139,15 @@ select {
     padding: 0;
 }
 
+.sidebar img {
+    width: 100%;
+    height: 60%;
+    margin-right: 0.5rem;
+}
 
 .sidebar li.active {
     font-weight: bold;
-    color: #4F46E5;
+    color: #0b3046;
 }
 
 .app-container {
@@ -160,7 +167,7 @@ select {
 .sidebar h2 {
     font-size: 1.25rem;
     margin-bottom: 1rem;
-    color: #4F46E5;
+    color: #0b3046;
 }
 
 .sidebar ul {
@@ -175,9 +182,15 @@ select {
 
 .sidebar li.active {
     font-weight: bold;
-    color: #4F46E5;
+    color: #0b3046;
 }
 
 .main-content {
     flex: 1;
+}
+
+.dashboard-page {
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
 }

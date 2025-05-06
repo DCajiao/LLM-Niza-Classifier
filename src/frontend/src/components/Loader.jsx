@@ -5,7 +5,7 @@ const Loader = () => {
   return (
     <div className="loader-overlay">
       <div className="loader-spinner"></div>
-      <p className="loader-text">Procesando... Por favor espera</p>
+      <p className="loader-text">Nuestra IA está procesando tu solicitud... Por favor espera</p>
     </div>
   );
 };

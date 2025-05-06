@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function Sidebar({ step }) {
   const steps = [
@@ -16,6 +17,7 @@ export default function Sidebar({ step }) {
       animate={{ opacity: 1, y: 0 }}
     >
       <aside className="sidebar">
+        <img src="../../public/img/icon_without_background.png" alt=""/>
         <h2>Progreso</h2>
         <ul>
           {steps.map((label, index) => (
@@ -25,7 +27,9 @@ export default function Sidebar({ step }) {
           ))}
         </ul>
         <hr></hr>
-        <button className="btn btn-primary">Dashboard</button>
+        <Link to="/dashboard">
+          <button className="btn btn-primary mt-3 w-100">Dashboard en Tiempo Real</button>
+        </Link>
       </aside>
     </motion.div>
   );
