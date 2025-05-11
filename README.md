@@ -1,4 +1,9 @@
 # LLM Niza Classifier
 
-### Links to microservices
-- Backend: [llm-niza-classifier-backend.onrender.com](https://llm-niza-classifier-backend.onrender.com)
+## 🏗️ Architecture diagram
+![](./docs/diagrams/diagram-components-clouds.png)
+---
+
+## 👀 Looking for more technical documentation?
+
+### 📄Please refer to the complete [documentation](https://deepwiki.com/DCajiao/LLM-Niza-Classifier)
