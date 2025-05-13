@@ -1,7 +1,23 @@
-import React from "react";
 import { motion } from "framer-motion";
+import Swal from "sweetalert2";
 
 export default function Step1({ formData, setFormData, onNext }) {
+  const handleValidation = () => {
+    const { nombre, email, edad, universidad } = formData;
+
+    if (!nombre || !email || !edad || !universidad) {
+      Swal.fire("Campos incompletos", "Por favor completa todos los campos antes de continuar.", "warning");
+      return;
+    }
+
+    const emailRegex = /\S+@\S+\.\S+/;
+    if (!emailRegex.test(email)) {
+      Swal.fire("Correo inválido", "Ingresa un correo electrónico válido.", "warning");
+      return;
+    }
+
+    onNext();
+  };
   return (
     <motion.div
       className="bg-white rounded-2xl shadow-md p-6 w-full max-w-3xl mx-auto"
@@ -16,7 +32,7 @@ export default function Step1({ formData, setFormData, onNext }) {
         <input type="number" placeholder="Edad" value={formData.edad} onChange={e => setFormData({...formData, edad: e.target.value})} className="p-2 border rounded" />
         <input type="text" placeholder="Universidad" value={formData.universidad} onChange={e => setFormData({...formData, universidad: e.target.value})} className="p-2 border rounded" />
       </div>
-      <button onClick={onNext} className="btn btn-primary">Siguiente</button>
+      <button onClick={handleValidation} className="btn btn-primary">Siguiente</button>
     </div>
     </motion.div>
   );

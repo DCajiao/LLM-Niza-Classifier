@@ -1,9 +1,19 @@
-import React from "react";
 import { motion } from "framer-motion";
+import Swal from "sweetalert2";
 
 const Step2 = ({ formData, setFormData, onNext, onBack }) => {
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+    const handleValidation = () => {
+        const { carrera, semestre, experiencia_previa } = formData;
+    
+        if (!carrera || !semestre || !experiencia_previa) {
+            Swal.fire("Campos incompletos", "Por favor completa todos los campos antes de continuar.", "warning");
+            return;
+        }
+    
+        onNext();
     };
 
     return (
@@ -50,7 +60,7 @@ const Step2 = ({ formData, setFormData, onNext, onBack }) => {
 
             <div className="flex justify-between">
                 <button onClick={onBack} className="btn btn-secondary me-2">Anterior</button>
-                <button onClick={onNext} className="btn btn-primary">Siguiente</button>
+                <button onClick={handleValidation} className="btn btn-primary">Siguiente</button>
             </div>
         </div>
         </motion.div>
