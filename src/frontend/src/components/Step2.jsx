@@ -7,7 +7,12 @@ const Step2 = ({ formData, setFormData, onNext, onBack }) => {
     };
     const handleValidation = () => {
         const { carrera, semestre, experiencia_previa } = formData;
-    
+
+        if (semestre < 1 || semestre > 16) {
+            Swal.fire("Semestre inválido", "El semestre debe estar entre 1 y 16.", "warning");
+            return;
+        }
+
         if (!carrera || !semestre || !experiencia_previa) {
             Swal.fire("Campos incompletos", "Por favor completa todos los campos antes de continuar.", "warning");
             return;
@@ -26,18 +31,26 @@ const Step2 = ({ formData, setFormData, onNext, onBack }) => {
             <h2 className="text-xl font-bold mb-4">Paso 2: Información Académica</h2>
             <div className="mb-4">
                 <label className="block mb-1">Carrera:</label>
-                <input
-                    type="text"
+                <select
                     name="carrera"
                     value={formData.carrera || ""}
                     onChange={handleChange}
                     className="border p-2 w-full"
-                />
+                >
+                    <option value="">Selecciona una categoría</option>
+                    <option value="Ingeniería">Ingeniería</option>
+                    <option value="Derecho">Derecho</option>
+                    <option value="Comunicación y Periodismo">Comunicación / Periodismo</option>
+                    <option value="Arte y Humanidades">Arte y Humanidades</option>
+                    <option value="Negocios y Economía">Negocios y Economía</option>
+                    <option value="Educación">Educación</option>
+                    <option value="Otros">Otros</option>
+                </select>
             </div>
             <div className="mb-4">
                 <label className="block mb-1">Semestre:</label>
                 <input
-                    type="text"
+                    type="number"
                     name="semestre"
                     value={formData.semestre || ""}
                     onChange={handleChange}

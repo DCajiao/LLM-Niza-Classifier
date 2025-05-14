@@ -5,6 +5,11 @@ export default function Step1({ formData, setFormData, onNext }) {
   const handleValidation = () => {
     const { nombre, email, edad, universidad } = formData;
 
+    if (edad < 18) {
+      Swal.fire("Edad inválida", "Debes tener al menos 18 años para registrarte.", "warning");
+      return;
+    }
+
     if (!nombre || !email || !edad || !universidad) {
       Swal.fire("Campos incompletos", "Por favor completa todos los campos antes de continuar.", "warning");
       return;
