@@ -5,12 +5,18 @@ from core.app import get_classification_niza
 from security.api_key_management import require_api_key
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}}, methods=["POST", "OPTIONS"], allow_headers=["Content-Type", "Authorization", "x-api-key"])
+CORS(app, resources={r"/*": {
+    "origins": "*",
+    "methods": ["POST", "OPTIONS"],
+    "allow_headers": ["Content-Type", "Authorization", "x-api-key"]
+}})
 
-
-@app.route('/predict_niza_classification', methods=['POST'])
+@app.route('/predict_niza_classification', methods=['POST', 'OPTIONS'])
 @require_api_key
 def form_submission():
+    if request.method == 'OPTIONS':
+        return '', 200 # Empty response for preflight
+    
     data = request.get_json()
     
     if 'description' not in data or not data['description']:

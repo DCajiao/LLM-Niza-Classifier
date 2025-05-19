@@ -3,6 +3,10 @@ import os
 
 def require_api_key(func):
     def wrapper(*args, **kwargs):
+        if request.method == 'OPTIONS':
+            # Allow preflight requests without API Key validation
+            return func(*args, **kwargs)
+        
         client_key = request.headers.get("x-api-key")
         server_key = os.getenv("API_KEY")
 

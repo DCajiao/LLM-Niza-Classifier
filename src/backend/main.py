@@ -5,12 +5,18 @@ from core.app import insert_data
 from security.api_key_management import require_api_key
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}}, methods=["POST", "OPTIONS"], allow_headers=["Content-Type", "Authorization", "x-api-key"])
+CORS(app, resources={r"/*": {
+    "origins": "*",
+    "methods": ["POST", "OPTIONS"],
+    "allow_headers": ["Content-Type", "Authorization", "x-api-key"]
+}})
 
-
-@app.route('/form_submission', methods=['POST'])
+@app.route('/form_submission', methods=['POST', 'OPTIONS'])
 @require_api_key
 def form_submission():
+    if request.method == 'OPTIONS':
+        return '', 200 # Empty response for preflight
+    
     data = request.get_json()
     try:
         response = insert_data(data)
