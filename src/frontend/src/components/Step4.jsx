@@ -35,6 +35,8 @@ export default function Paso4Clasificacion({ formData, setFormData, onNext, onBa
         try {
             await guardarRegistro(formData);
             Swal.fire("Registro exitoso", "Tus datos han sido almacenados", "success");
+            // Delete the local storage item
+            localStorage.removeItem("formData");
             onNext();
         } catch (e) {
             Swal.fire("Error", "No se pudo guardar tu información", "error");

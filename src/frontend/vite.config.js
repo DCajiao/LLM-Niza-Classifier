@@ -16,6 +16,5 @@ export default defineConfig({
   preview: {
     port: 3000,
     host: true,
-    allowedHosts: ['niza-classifier.onrender.com', 'llm-niza-classifier.onrender.com', 'llm-niza-classifier-backend.onrender.com']
   }
 });

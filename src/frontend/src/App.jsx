@@ -7,23 +7,34 @@ import Step3 from "./components/Step3";
 import Step4 from "./components/Step4";
 import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function App() {
   const [step, setStep] = useState(1);
 
-  const [formData, setFormData] = useState({
-    nombre: "",
-    email: "",
-    edad: "",
-    universidad: "",
-    carrera: "",
-    semestre: "",
-    experiencia_previa: "",
-    nombre_emprendimiento: "",
-    descripcion_emprendimiento: "",
-    acepta_politica: false,
+  // Inicialization of formData from localStorage if it exists
+  const [formData, setFormData] = useState(() => {
+    const savedData = localStorage.getItem("formData");
+    return savedData
+      ? JSON.parse(savedData)
+      : {
+          nombre: "",
+          email: "",
+          edad: "",
+          universidad: "",
+          carrera: "",
+          semestre: "",
+          experiencia_previa: "",
+          nombre_emprendimiento: "",
+          descripcion_emprendimiento: "",
+          acepta_politica: false,
+        };
   });
+
+  // Persist automatically in localStorage each time formData changes
+  useEffect(() => {
+    localStorage.setItem("formData", JSON.stringify(formData));
+  }, [formData]);
 
   const handleNext = () => setStep((prev) => Math.min(prev + 1, 5));
   const handleBack = () => setStep((prev) => Math.max(prev - 1, 1));
