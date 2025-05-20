@@ -3,7 +3,14 @@ import Swal from "sweetalert2";
 
 const Step2 = ({ formData, setFormData, onNext, onBack }) => {
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+
+        // If the category changes, reset the carrera field
+        if (name === "categoriaCarrera") {
+        setFormData({ ...formData, categoriaCarrera: value, carrera: "" });
+        } else {
+        setFormData({ ...formData, [name]: value });
+        }
     };
     const handleValidation = () => {
         const { carrera, semestre, experiencia_previa } = formData;
@@ -18,8 +25,40 @@ const Step2 = ({ formData, setFormData, onNext, onBack }) => {
             return;
         }
     
+        console.log(formData);
         onNext();
     };
+
+    const carrers = {
+        "Ingeniería y Ciencias Básicas": [
+            "Ingeniería de Datos e Inteligencia Artificial",
+            "Ingeniería Multimedia",
+            "Ingeniería Informática",
+            "Ingeniería Industrial",
+            "Ingeniería Eléctrica",
+            "Ingeniería Mecatrónica",
+            "Ingeniería Mecánica",
+            "Ingeniería Biomédica",
+            "Ingeniería Ambiental",
+            "Ingeniería y Ciencias Básicas",],
+        "Administración": [
+            "Publicidad en Medios Digitales",
+            "Mercadeo y Negocios Internacionales",
+            "Administración de Empresas - Modelo Dual",
+            "Mercadeo Global",
+            "Contaduría Pública",
+            "Derecho",],
+        "Arquitectura, Urbanismo y Diseño": [
+            "Arquitectura",
+            "Diseño de la Comunicación Gráfica",],
+        "Comunicación Social, Humanidades y Artes": [
+            "Cine",
+            "Comunicación Social - Periodismo",
+            "Narrativas y Entretenimiento Digital",],
+    }
+
+    const categorias = Object.keys(carrers);
+    const carrersFiltradas = carrers[formData.categoriaCarrera] || [];
 
     return (
         <motion.div
@@ -30,23 +69,35 @@ const Step2 = ({ formData, setFormData, onNext, onBack }) => {
         <div>
             <h2 className="text-xl font-bold mb-4">Paso 2: Información Académica</h2>
             <div className="mb-4">
-                <label className="block mb-1">Carrera:</label>
+                <label className="block mb-1">Área académica:</label>
                 <select
-                    name="carrera"
-                    value={formData.carrera || ""}
+                    name="categoriaCarrera"
+                    value={formData.categoriaCarrera || ""}
                     onChange={handleChange}
                     className="border p-2 w-full"
                 >
-                    <option value="">Selecciona una categoría</option>
-                    <option value="Ingeniería">Ingeniería</option>
-                    <option value="Derecho">Derecho</option>
-                    <option value="Comunicación y Periodismo">Comunicación / Periodismo</option>
-                    <option value="Arte y Humanidades">Arte y Humanidades</option>
-                    <option value="Negocios y Economía">Negocios y Economía</option>
-                    <option value="Educación">Educación</option>
-                    <option value="Otros">Otros</option>
+                    <option value="">Selecciona un área</option>
+                    {categorias.map((cat, idx) => (
+                    <option key={idx} value={cat}>{cat}</option>
+                    ))}
                 </select>
             </div>
+            {formData.categoriaCarrera && (
+            <div className="mb-4">
+                <label className="block mb-1">Carrera:</label>
+                <select
+                name="carrera"
+                value={formData.carrera || ""}
+                onChange={handleChange}
+                className="border p-2 w-full"
+                >
+                <option value="">Selecciona una carrera</option>
+                {carrersFiltradas.map((carrera, idx) => (
+                    <option key={idx} value={carrera}>{carrera}</option>
+                ))}
+                </select>
+            </div>
+            )}
             <div className="mb-4">
                 <label className="block mb-1">Semestre:</label>
                 <input
