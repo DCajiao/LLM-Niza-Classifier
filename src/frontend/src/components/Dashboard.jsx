@@ -1,9 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-export default function Dashboard() {
-    const navigate = useNavigate();
+export default function Dashboard({handleReset}) {
     return (
         <motion.div
             className="bg-white rounded-2xl shadow-md p-6 w-full max-w-3xl mx-auto"
@@ -34,7 +32,7 @@ export default function Dashboard() {
                 <div className="text-center">
                     <button
                         className="btn btn-primary"
-                        onClick={() => navigate("/")}
+                        onClick={handleReset}
                     >
                         Volver al Inicio
                     </button>

@@ -36,8 +36,9 @@ export default function App() {
     localStorage.setItem("formData", JSON.stringify(formData));
   }, [formData]);
 
-  const handleNext = () => setStep((prev) => Math.min(prev + 1, 5));
+  const handleNext = () => setStep((prev) => Math.min(prev + 1, 6));
   const handleBack = () => setStep((prev) => Math.max(prev - 1, 1));
+  const handleReset = () => {setStep(1)};
 
   const renderStep = () => {
     switch (step) {
@@ -49,8 +50,23 @@ export default function App() {
         return <Step3 formData={formData} setFormData={setFormData} onNext={handleNext} onBack={handleBack} />;
       case 4:
         return <Step4 formData={formData} setFormData={setFormData} onNext={handleNext} onBack={handleBack} />;
+      case 5:
+        return (
+          <div className="text-center grid gap-4">
+            <h2 className="text-2xl font-bold mb-4">¡Gracias por completar el formulario!</h2>
+            <p className="mb-4">Tu información ha sido guardada exitosamente.</p>
+            <button onClick={handleReset} className="btn btn-primary">
+              Volver a empezar
+            </button>
+            <button onClick={() => setStep(6)} className="btn btn-secondary ml-2">
+              Ir al Dashboard
+            </button>
+          </div>
+        );
+      case 6:
+        return <Dashboard handleReset={handleReset}/>;
       default:
-        return <div>¡Gracias por participar!</div>;
+        return <Step1 formData={formData} setFormData={setFormData} onNext={handleNext} />;
     }
   };
 
@@ -59,12 +75,11 @@ export default function App() {
       <div className="min-vh-100 bg-light">
         <Header />
         <div className="d-flex app-container p-4">
-          <Sidebar step={step} />
+          <Sidebar step={step} setStep={setStep} />
           <main className="main-content">
             <div className="card shadow-sm p-4">
               <Routes>
                 <Route path="/" element={renderStep()} />
-                <Route path="/dashboard" element={<Dashboard />} />
               </Routes>
             </div>
           </main>
