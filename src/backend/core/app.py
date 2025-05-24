@@ -31,6 +31,10 @@ def insert_data(form_data: dict):
         form_data["clasificaciones_niza"] = json.dumps(
             form_data["clasificaciones_niza"])
 
+        # If the 'edad' field is empty, set it to 0
+        if not form_data["edad"]:
+            form_data["edad"] = 0
+
         db_connector.execute_query(query, form_data)
         logging.info("Data inserted successfully")
         return {
@@ -49,9 +53,9 @@ def insert_data(form_data: dict):
 def form_data_validation(form_data: dict) -> bool:
     # Check if all required fields are present
     required_fields = [
-        "nombre",
-        "email",
-        "edad",
+        #"nombre",
+        #"email",
+        #"edad",
         "universidad",
         "carrera",
         "semestre",
