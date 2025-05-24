@@ -33,10 +33,17 @@ export default function Paso4Clasificacion({ formData, setFormData, onNext, onBa
         setLoading(true);
 
         try {
+            console.log("Datos a guardar:", formData);
             await guardarRegistro(formData);
             Swal.fire("Registro exitoso", "Tus datos han sido almacenados", "success");
-            // Delete the local storage item
-            localStorage.removeItem("formData");
+
+            setFormData({...formData,
+                nombre_emprendimiento: "",
+                descripcion_emprendimiento: "",
+                clasificaciones_niza: [],
+                acepta_politica: false,
+            });
+            
             onNext();
         } catch (e) {
             Swal.fire("Error", "No se pudo guardar tu información", "error");
@@ -113,7 +120,7 @@ export default function Paso4Clasificacion({ formData, setFormData, onNext, onBa
                             }
                         />
                         <label htmlFor="acepta" className="form-check-label">
-                            Acepto la <a href="#">política de privacidad</a> y el procesamiento de mis datos.
+                            Acepto la <a href="https://www.mintic.gov.co/portal/inicio/Secciones-auxiliares/Politicas/2627:Politicas-de-Privacidad-y-Condiciones-de-Uso">política de privacidad</a> y el procesamiento de mis datos.
                         </label>
                         </div>
 

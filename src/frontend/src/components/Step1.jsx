@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 export default function Step1({ formData, setFormData, onNext }) {
   const handleValidation = () => {
-    const { nombre, email, edad, universidad } = formData;
+    const { edad, universidad } = formData;
 
     // Si la edad no es nula y es mayor a 18, entonces se puede continuar
     if (edad && edad < 18) {

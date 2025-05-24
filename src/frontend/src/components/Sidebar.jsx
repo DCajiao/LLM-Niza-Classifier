@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 
-export default function Sidebar({ step }) {
+export default function Sidebar({ step, setStep }) {
   const steps = [
     "Datos personales",
     "Formación académica",
@@ -27,9 +26,11 @@ export default function Sidebar({ step }) {
           ))}
         </ul>
         <hr></hr>
-        <Link to="/dashboard">
-          <button className="btn btn-primary mt-3 w-100">Dashboard en Tiempo Real</button>
-        </Link>
+        <div className="text-center grid gap-4">
+            <button onClick={() => setStep(6)} className="btn btn-primary mt-3 w-100">
+              Dashboard en Tiempo Real
+            </button>
+        </div>
       </aside>
     </motion.div>
   );
